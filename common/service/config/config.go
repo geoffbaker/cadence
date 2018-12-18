@@ -25,6 +25,7 @@ import (
 	"time"
 
 	"github.com/uber-go/tally/m3"
+	"github.com/uber/cadence/common/elasticsearch"
 	"github.com/uber/cadence/common/messaging"
 	"github.com/uber/cadence/common/service/dynamicconfig"
 	"github.com/uber/ringpop-go/discovery"
@@ -45,6 +46,8 @@ type (
 		Services map[string]Service `yaml:"services"`
 		// Kafka is the config for connecting to kafka
 		Kafka messaging.KafkaConfig `yaml:"kafka"`
+		// ElasticSearch if config for connecting to ElasticSearch
+		ElasticSearch elasticsearch.Config `yaml:elasticsearch`
 	}
 
 	// Service contains the service specific config items

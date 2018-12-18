@@ -39,6 +39,7 @@ import (
 	"github.com/uber/cadence/common/service/config"
 	"github.com/uber/cadence/common/service/dynamicconfig"
 
+	"github.com/olivere/elastic"
 	"github.com/uber-common/bark"
 	"github.com/uber-go/tally"
 	ringpop "github.com/uber/ringpop-go"
@@ -67,6 +68,7 @@ type (
 		ReplicatorConfig   config.Replicator
 		MetricsClient      metrics.Client
 		MessagingClient    messaging.Client
+		ESClient           *elastic.Client
 		DynamicConfig      dynamicconfig.Client
 		DispatcherProvider client.DispatcherProvider
 		ArchivalClient     archival.Client

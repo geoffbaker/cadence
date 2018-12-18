@@ -149,9 +149,15 @@ var keys = map[Key]string{
 	EnableArchival:                                        "history.enableArchival",
 	NumSystemWorkflows:                                    "history.numSystemWorkflows",
 
-	WorkerPersistenceMaxQPS:       "worker.persistenceMaxQPS",
-	WorkerReplicatorConcurrency:   "worker.replicatorConcurrency",
-	WorkerReplicationTaskMaxRetry: "worker.replicationTaskMaxRetry",
+	WorkerPersistenceMaxQPS:        "worker.persistenceMaxQPS",
+	WorkerReplicatorConcurrency:    "worker.replicatorConcurrency",
+	WorkerReplicationTaskMaxRetry:  "worker.replicationTaskMaxRetry",
+	WorkerIndexerConcurrency:       "worker.indexerConcurrency",
+	WorkerESProcessorNumOfWorkers:  "worker.ESProcessorNumOfWorkers",
+	WorkerESProcessorBulkActions:   "worker.ESProcessorBulkActions",
+	WorkerESProcessorBulkSize:      "worker.ESProcessorBulkSize",
+	WorkerESProcessorFlushInterval: "worker.ESProcessorFlushInterval",
+	WorkerESProcessorRetryInterval: "worker.ESProcessorRetryInterval",
 }
 
 const (
@@ -365,14 +371,27 @@ const (
 
 	// EnableEventsV2 is whether to use eventsV2
 	EnableEventsV2
-	// key for histoworkerry
+
+	// key for worker
 
 	// WorkerPersistenceMaxQPS is the max qps worker host can query DB
 	WorkerPersistenceMaxQPS
-	// WorkerReplicatorConcurrency is the max concurrenct tasks to be processed at any given time
+	// WorkerReplicatorConcurrency is the max concurrent tasks to be processed at any given time
 	WorkerReplicatorConcurrency
 	// WorkerReplicationTaskMaxRetry is the max retry for any task
 	WorkerReplicationTaskMaxRetry
+	// WorkerIndexerConcurrency is the max concurrent messages to be processed at any given time
+	WorkerIndexerConcurrency
+	// WorkerESProcessorNumOfWorkers is num of workers for esProcessor
+	WorkerESProcessorNumOfWorkers
+	// WorkerESProcessorBulkActions is max number of requests in bulk for esProcessor
+	WorkerESProcessorBulkActions
+	// WorkerESProcessorBulkSize is max total size of bulk in bytes for esProcessor
+	WorkerESProcessorBulkSize
+	// WorkerESProcessorFlushInterval is flush interval for esProcessor
+	WorkerESProcessorFlushInterval
+	// WorkerESProcessorRetryInterval is retry interval when bulk processor
+	WorkerESProcessorRetryInterval
 
 	// lastKeyForTest must be the last one in this const group for testing purpose
 	lastKeyForTest
