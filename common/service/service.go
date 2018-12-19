@@ -42,6 +42,7 @@ import (
 	"github.com/olivere/elastic"
 	"github.com/uber-common/bark"
 	"github.com/uber-go/tally"
+	"github.com/uber/cadence/common/elasticsearch"
 	ringpop "github.com/uber/ringpop-go"
 	"go.uber.org/yarpc"
 )
@@ -69,6 +70,7 @@ type (
 		MetricsClient      metrics.Client
 		MessagingClient    messaging.Client
 		ESClient           *elastic.Client
+		ESConfig           *elasticsearch.Config
 		DynamicConfig      dynamicconfig.Client
 		DispatcherProvider client.DispatcherProvider
 		ArchivalClient     archival.Client
